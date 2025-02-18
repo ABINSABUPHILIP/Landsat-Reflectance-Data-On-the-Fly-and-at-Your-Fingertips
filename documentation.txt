@@ -64,13 +64,17 @@ The application follows a client-server architecture:
 8. **Optional AI Integration**: Future integration of AI models for predicting optimal measurement times and automated cloud
 
 
-##7. Code Structure and Explanation
+##6. Code Structure and Explanation
 server.js: Main server file that sets up the Express.js application, handles API endpoints, interacts with the database, and manages notifications.\n- public/: Contains static files including:\n - index.html: Main HTML file for the application.\n - styles.css: Custom CSS styles.\n - app.js: Client-side JavaScript for handling map interactions, form submissions, and API calls.\n\n## 8. API Endpoints
 POST /api/add-location
 Description: Stores user input (email, target location, and cloud cover preferences) in the database.\n- Input: JSON object with email, location, lat, lon, and cloudCover.\n- Output: Success or error message.
 GET /api/get-landsat-data
 Description: Retrieves Landsat SR data based on query parameters.\n- Input: Query parameters lat, lon, and cloudCover.\n- Output: JSON response containing SR data and metadata from the NASA API.
-9. Future Enhancements
+
+
+##7. Future Enhancements
 Integration with Sentinel-2 Data: Extend functionality to include Sentinel-2 imagery for higher temporal resolution.\n- Advanced AI Models: Implement machine learning for predicting optimal ground measurement times and automated cloud filtering.\n- Enhanced Notification Options: Add SMS notifications using services like Twilio.\n- Offline Functionality: Enable caching of target locations for use in areas with limited connectivity.
-10. Conclusion
+
+
+##8. Conclusion
 This project streamlines the process of comparing ground-based spectral measurements with satellite-derived Landsat SR data, making remote sensing validation accessible and efficient. The application supports educational, scientific, and citizen science initiatives, and future enhancements will further extend its capabilities.
