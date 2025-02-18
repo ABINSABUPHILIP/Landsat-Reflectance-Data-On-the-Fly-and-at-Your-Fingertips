@@ -73,24 +73,19 @@ The application follows a client-server architecture:
    ```sh
    git clone https://github.com/your-username/Landsat-Reflectance-Data.git
    cd Landsat-Reflectance-Data
-Install Dependencies
-sh
-Copy
-Edit
-npm install
+
+Install Dependencies:
+    npm install
+
 Configure Environment Variables Create a .env file in the project root with:
-sh
-Copy
-Edit
-NASA_API_KEY=your_nasa_api_key
-PORT=3000
-EMAIL_USER=your_email@example.com
-EMAIL_PASS=your_email_password
-Run the Application
-sh
-Copy
-Edit
-node server.js
+    NASA_API_KEY=your_nasa_api_key
+    PORT=3000
+    EMAIL_USER=your_email@example.com
+    EMAIL_PASS=your_email_password
+
+Run the Application:
+    node server.js
+
 Access the application at http://localhost:3000.
 7. Code Structure and Explanation
 server.js: Main server file that sets up the Express.js application, handles API endpoints, interacts with the database, and manages notifications.\n- public/: Contains static files including:\n - index.html: Main HTML file for the application.\n - styles.css: Custom CSS styles.\n - app.js: Client-side JavaScript for handling map interactions, form submissions, and API calls.\n\n## 8. API Endpoints
