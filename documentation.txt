@@ -1,0 +1,104 @@
+# Detailed Documentation: Landsat Reflectance Data: On the Fly and at Your Fingertips
+
+## Table of Contents
+1. Overview
+2. Features
+3. Architecture and Design
+4. Tech Stack
+5. Functional Workflow
+6. Installation and Setup
+7. Code Structure and Explanation
+8. API Endpoints
+9. Future Enhancements
+10. Conclusion
+
+---
+
+## 1. Overview
+Landsat Reflectance Data: On the Fly and at Your Fingertips is a web-based application that enables users to compare ground-based spectral measurements with Landsat Surface Reflectance (SR) data. The application allows users to define a target location, receive notifications about upcoming Landsat overpasses, and access the corresponding SR data for validation and research purposes. This tool supports educational initiatives, citizen science, and scientific research by simplifying remote sensing validation and analysis.
+
+## 2. Features
+- **Define Target Location**: Users can specify a target location by entering latitude/longitude, a place name, or by clicking on an interactive map.
+- **Landsat Overpass Notifications**: The system calculates when Landsat 8 or 9 will pass over the specified location and sends notifications (via email or SMS) ahead of time.
+- **Access and Display Landsat Data**: Retrieve and visualize Landsat SR data for the target pixel and its surrounding area (a 3x3 grid), presented as spectral signatures.
+- **Cloud Coverage and Scene Metadata**: Filter scenes based on cloud cover percentage and view associated metadata such as acquisition time, path, and row.
+- **Data Visualization**: Use interactive charts to display spectral signatures, enabling side-by-side comparisons between Landsat data and ground-based measurements.
+- **Downloadable Data**: Export retrieved SR data in CSV format for further analysis.
+- **Optional AI Enhancements**: Future integration of AI models for predicting optimal measurement times and automated cloud filtering.
+
+## 3. Architecture and Design
+The application follows a client-server architecture:
+
+- **Frontend**: Built with HTML, CSS, and JavaScript. Uses libraries such as Leaflet.js for interactive mapping, Chart.js for data visualization, and Bootstrap for responsive design.
+- **Backend**: Developed using Node.js and Express.js to handle server-side logic, API requests, and integration with external services (e.g., NASA Earthdata API). Data is stored in a SQLite or MySQL database.
+- **Notification System**: Utilizes Nodemailer to send email notifications and can be extended to include SMS alerts via services like Twilio.
+- **Data Sources**: Primary data is obtained from NASA Landsat Data, with additional mapping layers provided by the OpenStreetMap API.
+
+## 4. Tech Stack
+### Frontend
+- **HTML, CSS, JavaScript**: Core web technologies for building the user interface.
+- **Leaflet.js**: Provides interactive maps for location selection.
+- **Chart.js**: Used for plotting and visualizing spectral signature data.
+- **Bootstrap**: Ensures a responsive, mobile-friendly design.
+- **Font Awesome**: Provides icons and UI elements.
+
+### Backend
+- **Node.js & Express.js**: Handle server-side logic and API request routing.
+- **SQLite/MySQL**: Store user data, target locations, and overpass schedules.
+- **Axios**: Used for API requests to external services.
+- **Nodemailer**: Sends email notifications for upcoming satellite overpasses.
+
+### APIs & Data
+- **NASA Earthdata API**: Retrieves Landsat SR data and associated metadata.
+- **NASA Landsat Acquisition Tool**: Provides overpass scheduling information.
+- **OpenStreetMap API**: Supplies base map layers for interactive maps.
+
+## 5. Functional Workflow
+1. **User Input**: Users provide their email, select a target location (via map click or manual entry), and set cloud cover preferences.
+2. **Data Storage**: The backend stores the user’s details and preferences in the database.
+3. **Overpass Calculation**: The system uses NASA’s Landsat Acquisition Tool to calculate upcoming overpass times for the specified location.
+4. **Notification**: Users are notified in advance (via email or SMS) about the upcoming Landsat overpass.
+5. **Data Retrieval**: After the overpass, the application fetches Landsat SR data for the target pixel and its surrounding grid using the NASA Earthdata API.
+6. **Data Visualization**: The retrieved data is visualized as interactive spectral signatures using Chart.js.
+7. **Data Download**: Users can download the SR data in CSV format for further analysis.
+
+## 6. Installation and Setup
+### Prerequisites
+- **Node.js** and **npm** must be installed.
+- A valid **NASA API Key** is required.
+- Environment variables for email notifications (if used).
+
+### Setup Steps
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/your-username/Landsat-Reflectance-Data.git
+   cd Landsat-Reflectance-Data
+Install Dependencies
+sh
+Copy
+Edit
+npm install
+Configure Environment Variables Create a .env file in the project root with:
+sh
+Copy
+Edit
+NASA_API_KEY=your_nasa_api_key
+PORT=3000
+EMAIL_USER=your_email@example.com
+EMAIL_PASS=your_email_password
+Run the Application
+sh
+Copy
+Edit
+node server.js
+Access the application at http://localhost:3000.
+7. Code Structure and Explanation
+server.js: Main server file that sets up the Express.js application, handles API endpoints, interacts with the database, and manages notifications.\n- public/: Contains static files including:\n - index.html: Main HTML file for the application.\n - styles.css: Custom CSS styles.\n - app.js: Client-side JavaScript for handling map interactions, form submissions, and API calls.\n\n## 8. API Endpoints
+POST /api/add-location
+Description: Stores user input (email, target location, and cloud cover preferences) in the database.\n- Input: JSON object with email, location, lat, lon, and cloudCover.\n- Output: Success or error message.
+GET /api/get-landsat-data
+Description: Retrieves Landsat SR data based on query parameters.\n- Input: Query parameters lat, lon, and cloudCover.\n- Output: JSON response containing SR data and metadata from the NASA API.
+9. Future Enhancements
+Integration with Sentinel-2 Data: Extend functionality to include Sentinel-2 imagery for higher temporal resolution.\n- Advanced AI Models: Implement machine learning for predicting optimal ground measurement times and automated cloud filtering.\n- Enhanced Notification Options: Add SMS notifications using services like Twilio.\n- Offline Functionality: Enable caching of target locations for use in areas with limited connectivity.
+10. Conclusion
+This project streamlines the process of comparing ground-based spectral measurements with satellite-derived Landsat SR data, making remote sensing validation accessible and efficient. The application supports educational, scientific, and citizen science initiatives, and future enhancements will further extend its capabilities.
