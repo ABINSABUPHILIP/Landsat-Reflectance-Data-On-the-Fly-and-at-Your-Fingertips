@@ -61,33 +61,10 @@ The application follows a client-server architecture:
 5. **Data Retrieval**: After the overpass, the application fetches Landsat SR data for the target pixel and its surrounding grid using the NASA Earthdata API.
 6. **Data Visualization**: The retrieved data is visualized as interactive spectral signatures using Chart.js.
 7. **Data Download**: Users can download the SR data in CSV format for further analysis.
+8. **Optional AI Integration**: Future integration of AI models for predicting optimal measurement times and automated cloud
 
-## 6. Installation and Setup
-### Prerequisites
-- **Node.js** and **npm** must be installed.
-- A valid **NASA API Key** is required.
-- Environment variables for email notifications (if used).
 
-### Setup Steps
-1. **Clone the Repository**
-   ```sh
-   git clone https://github.com/your-username/Landsat-Reflectance-Data.git
-   cd Landsat-Reflectance-Data
-
-Install Dependencies:
-    npm install
-
-Configure Environment Variables Create a .env file in the project root with:
-    NASA_API_KEY=your_nasa_api_key
-    PORT=3000
-    EMAIL_USER=your_email@example.com
-    EMAIL_PASS=your_email_password
-
-Run the Application:
-    node server.js
-
-Access the application at http://localhost:3000.
-7. Code Structure and Explanation
+##7. Code Structure and Explanation
 server.js: Main server file that sets up the Express.js application, handles API endpoints, interacts with the database, and manages notifications.\n- public/: Contains static files including:\n - index.html: Main HTML file for the application.\n - styles.css: Custom CSS styles.\n - app.js: Client-side JavaScript for handling map interactions, form submissions, and API calls.\n\n## 8. API Endpoints
 POST /api/add-location
 Description: Stores user input (email, target location, and cloud cover preferences) in the database.\n- Input: JSON object with email, location, lat, lon, and cloudCover.\n- Output: Success or error message.
